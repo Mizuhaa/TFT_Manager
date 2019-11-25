@@ -1,0 +1,19 @@
+.holodeck {
+    position:absolute; 
+    bottom:0;
+    background-color: aqua;
+    width: 100%;
+    margin: 0;
+    left: 0px;
+}
+
+.cardHolder{
+    padding: 0.3%;
+    width: 350px;
+    height: 200px;
+}
+
+.buttonReroll{
+    height: 50%;
+    width: 5%;
+}
