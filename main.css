@@ -1,5 +1,5 @@
 .holodeck {
-    position:absolute; 
+    position:absolute;
     bottom:0;
     background-color: aqua;
     width: 100%;
@@ -9,11 +9,10 @@
 
 .cardHolder{
     padding: 0.3%;
-    width: 350px;
-    height: 200px;
+    width: 300px;
+    height: 175px;
 }
 
-.buttonReroll{
-    height: 50%;
-    width: 5%;
+.btn-design {
+    margin-top:70px;
 }

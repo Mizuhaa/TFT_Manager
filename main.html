@@ -1,15 +1,21 @@
 <html>
     <head>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-        <script src="main.js"></script>  
-        <link rel="stylesheet" type="text/css" href="main.css"> 
+        <script src="main.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-        <div class="holodeck d-flex flex-row">
-            <button onclick="rerollCards()" class="buttonReroll p-2"></button>
+    <div class="container-fluid holodeck d-flex flex-row">
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">Reroll</button>
+            <br>
+            <button class="btn btn-primary btn-lg btn-block" style="margin-top:10px;"> Test </button>
+        </div>
+        <div class="col-md-10">
             <div id="holodeck" class="p-2"></div>
         </div>
+    </div>
     </body>
 </html>
