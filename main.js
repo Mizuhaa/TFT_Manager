@@ -1,17 +1,23 @@
 window.onload = function() {
     this.generateAndCreate5Cards();
+    displayGolds();
+    displayExp();
 };
 
-<<<<<<< HEAD
 var golds = 0;
 var exp = 100;
-=======
 var charactersArray = ['Alternant', 'Employee', 'Senior'];
 var skillsArray = ['PHP', 'C#', 'JS', 'COBOL'];
 var fieldArray = ['Web', 'Applicatif'];
 var playerArray = []
 
->>>>>>> 3afa3387444b314bf3ee710422f0c733a0c70882
+function displayGolds(){
+    document.getElementById("goldDisplayer").innerHTML = golds;
+}
+
+function displayExp(){
+    document.getElementById("expDisplayer").innerHTML = Math.floor(exp/100);
+}
 
 function addTheImage(numberPng) {
     var img = document.createElement('img');
@@ -48,24 +54,29 @@ function remove5Cards(){
     }
 }
 
-<<<<<<< HEAD
 function gainGolds(){
     golds = golds + 10;
+    displayGolds();
 
 }
 
 function gainExp(){
     exp = exp + 50;
+    displayExp();
 }
 
 function changeTurn(){
+    remove5Cards();
     generateAndCreate5Cards();
     gainGolds();
     gainExp();
 }
 
-=======
 function selectCharacter(img) {
     var a = 0;
 }
->>>>>>> 3afa3387444b314bf3ee710422f0c733a0c70882
+
+function levelUp(){
+    exp+=50;
+    golds-=10;
+}

@@ -7,27 +7,30 @@
         <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-<<<<<<< HEAD
-        <div class="container-fluid">
-            <div class="col-md-2">
-                <button class="btn-primary">qosihd</button>
+        <button onclick="changeTurn()">qsdhqh</button>
+        <!--La partie footer-->
+        <footer  class="page-footer fixed-bottom">
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="offset-md-5 col-md-2 offset-md-5">
+                        <p id="goldDisplayer"></p>
+                        <p id="expDisplayer"></p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="d-flex flex-row holodeck">
-            <div id="holodeck" class="p-2">
-                
+            <div class="row">
+                <div class="container-fluid d-flex flex-row ">
+                    <div class="col-md-2">
+                        <button class="btn btn-primary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">Reroll</button>
+                        <br>
+                        <button class="btn btn-primary btn-lg btn-block" style="margin-top:10px;" onclick="levelUp()"> Level Up </button>
+                    </div>
+                    <div class="col-md-10">
+                            <div id="holodeck" class="p-2"></div>
+                    </div>
+                </div>
             </div>
-=======
-    <div class="container-fluid holodeck d-flex flex-row">
-        <div class="col-md-2">
-            <button class="btn btn-primary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">Reroll</button>
-            <br>
-            <button class="btn btn-primary btn-lg btn-block" style="margin-top:10px;"> Test </button>
-        </div>
-        <div class="col-md-10">
-            <div id="holodeck" class="p-2"></div>
->>>>>>> 3afa3387444b314bf3ee710422f0c733a0c70882
-        </div>
-    </div>
+        </footer>
+        <!--Fin de la partie footer-->
     </body>
 </html>
