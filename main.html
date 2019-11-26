@@ -8,43 +8,59 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <button onclick="changeTurn()">change</button>
-        <button onclick="calculPoints()">end</button>
-
-        <aside class="col-md-2">
-            <div class="card" style="margin-top:200px;">
-                <article class="card-group-item">
-                    <header class="card-header">
-                        <h6 class="title">Famille Applicative </h6>
-                    </header>
-                    <div class="filter-content">
-                        <div class="card-body">
-                            <div class="row">
-                                <p style="margin: 0 auto;"> <img src="res/csharp.png" class="img-fluid imgLogo" alt="Responsive image"> Texte à droite </p>
-                            </div>
-                            <div class="row">
-                                <p style="margin: 0 auto;"> <img src="res/cobol.png" class="img-fluid imgLogo" alt="Responsive image"> Texte à droite </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-group-item">
-                    <header class="card-header">
-                        <h6 class="title">Famille Web </h6>
-                    </header>
-                    <div class="filter-content">
-                        <div class="card-body">
-                            <div class="row">
-                                <p style="margin: 0 auto;"> <img src="res/js.png" class="img-fluid imgLogo" alt="Responsive image"> Texte à droite </p>
-                            </div>
-                            <div class="row">
-                                <p style="margin: 0 auto;"> <img src="res/php.png" class="img-fluid imgLogo" alt="Responsive image"> Texte à droite </p>			</div>
-                        </div>
-                    </div>
-                </article>
-                </article>
+            <!--Partie header-->
+            <div class="offset-md-5 col-md-2 offset-md-5">
+                <p><button type="button" class="btn btn-primary">Tour <span id="turnCounter">1</span></button></p>
             </div>
-        </aside>
+            <!--Fin de la partie header-->
+
+        <button onclick="changeTurn()">change</button>
+        <button onclick="endGame()">end</button>
+        <p id="scoreEnd">z</p>
+        <!--Partie familles-->
+        <div class="container-fluid">
+            <div class="col-md-2">
+                <div class="card" style="margin-top:10%;">
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Famille Applicative </h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <p style="margin: 0 auto;"> <img src="res/csharp.png" class="img-fluid imgLogo" alt="Responsive image"><span id="csharpCounter">0</span></p>
+                                </div>
+                                <div class="row">
+                                    <p style="margin: 0 auto;"> <img src="res/cobol.png" class="img-fluid imgLogo" alt="Responsive image"><span id="cobolCounter">0</span> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Famille Web </h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <p style="margin: 0 auto;"> <img src="res/js.png" class="img-fluid imgLogo" alt="Responsive image"><span id="jsCounter">0</span> </p>
+                                </div>
+                                <div class="row">
+                                    <p style="margin: 0 auto;"> <img src="res/php.png" class="img-fluid imgLogo" alt="Responsive image"><span id="phpCounter">0</span> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    </article>
+                </div>
+            </div>
+            <!--Fin de la partie familles-->
+            <!--Partie terrain-->
+            <div class="col-md-5" style="background-color: aquamarine;">
+                <p id="fieldHolder">s</p>
+            </div>
+        </div>
+        <!--Fin de la partie terrain-->
 
         <!--La partie footer-->
         <footer  class="page-footer fixed-bottom">

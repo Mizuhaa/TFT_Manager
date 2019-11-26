@@ -8,7 +8,8 @@ var golds = 5;
 var exp = 100;
 var charactersArray = ['Alternant', 'Employee', 'Senior'];
 var skillsArray = ['PHP', 'C#', 'JS', 'COBOL'];
-var playerArray = []
+var playerArray = [];
+var currenTurn = 1;
 
 function displayGolds(){
     document.getElementById("goldDisplayer").innerHTML = " " + golds;
@@ -16,6 +17,26 @@ function displayGolds(){
 
 function displayExp(){
     document.getElementById("expDisplayer").innerHTML = " " + Math.floor(exp/100);
+}
+
+function displayTurn(){
+    document.getElementById("turnCounter").innerText = currenTurn;
+}
+
+function addTheField(numberPng){
+    var spanContainer = document.createElement('span');
+    spanContainer.classList.add("imageContainer");
+
+    var img = document.createElement('img');
+    img.src = "res/fields/" + numberPng + ".png";
+    img.classList.add("cardHolder");
+    img.id = numberPng;
+
+    img.setAttribute('onclick', 'selectField(this)');
+
+    spanContainer.appendChild(img);
+
+    document.getElementById("holodeck").appendChild(spanContainer);
 }
 
 function addTheImage(numberPng) {
@@ -81,9 +102,23 @@ function generateAndCreateImage(){
     addTheImage(number);
 }
 
+function generateAndCreateField(){
+    var number = Math.floor(Math.random() * 3) + 1;
+    addTheField(number);
+}
+
 function generateAndCreate5Cards(){
-    for(var i=0; i < 5; i++){
+    var maxCards = 5;
+    if(currenTurn == 1 || currenTurn%5==0){
+        maxCards = 4;
+    }
+
+    for(var i=0; i < maxCards; i++){
         generateAndCreateImage();
+    }
+    
+    if(currenTurn == 1 ||currenTurn%5==0){
+        generateAndCreateField();
     }
 }
 
@@ -106,10 +141,23 @@ function remove5Cards(){
 }
 
 function changeTurn(){
+    addTurn();
     remove5Cards();
     generateAndCreate5Cards();
     addGolds(10);
     addExp(50);
+    updateFamilies();
+}
+
+function selectField(img){
+    if(golds - (img.id) >= 0){
+
+        img.removeAttribute("onclick");
+
+        document.getElementById("fieldHolder").appendChild(img);
+        
+        addGolds(-(img.id));
+    }
 }
 
 function selectCharacter(img) {
@@ -166,14 +214,67 @@ function addExp(number){
     displayExp();
 }
 
+function addTurn(){
+    currenTurn += 1;
+    displayTurn();
+}
+
+function endGame(){
+    updateFamilies();
+    calculPoints()
+}
+
 function calculPoints(){
     var totalPoints = 0;
 
-    const languageMap = skillsArray.map(x => 0);
+    const languageMap = new Array();
 
     playerArray.forEach(function(element){
         element.skills.forEach(function(skillElement){
-            languageMap[skillElement] += 1;
+            if(languageMap[skillElement] == null){
+                languageMap[skillElement] = 1;
+            }
+            else{
+                languageMap[skillElement] += 1;
+            }
         });
     });
+
+    Object.values(languageMap).forEach(function(element) {
+        totalPoints += element;
+    });
+
+    document.getElementById("scoreEnd").innerHTML = totalPoints;
+}
+
+function updateFamilies(){
+    const languageMap = new Array();
+
+    playerArray.forEach(function(element){
+        element.skills.forEach(function(skillElement){
+            if(languageMap[skillElement] == null){
+                languageMap[skillElement] = 1;
+            }
+            else{
+                languageMap[skillElement] += 1;
+            }
+        });
+    });
+    
+    for(var i = 0; i < Object.keys(languageMap).length; i++){
+        var element = Object.keys(languageMap)[i];
+        var number = languageMap[element];
+        if(element==="C#"){
+            document.getElementById("csharpCounter").innerHTML = number;
+        }
+        if(element==="COBOL"){
+            document.getElementById("cobolCounter").innerHTML = number;
+        }
+        if(element==="JS"){
+            document.getElementById("jsCounter").innerHTML = number;
+        }
+        if(element==="PHP"){
+            document.getElementById("phpCounter").innerHTML = number;
+        }
+    }
 }
