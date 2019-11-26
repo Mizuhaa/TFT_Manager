@@ -8,7 +8,6 @@ var golds = 5;
 var exp = 100;
 var charactersArray = ['Alternant', 'Employee', 'Senior'];
 var skillsArray = ['PHP', 'C#', 'JS', 'COBOL'];
-var fieldArray = ['Web', 'Applicatif'];
 var playerArray = []
 
 function displayGolds(){
@@ -46,6 +45,13 @@ function addTheImage(numberPng) {
         i++;
         spanContainer.appendChild(skillImage);
     });
+
+    var price = document.createElement('i');
+    price.classList.add("fa");
+    price.classList.add("fa-money");
+    price.classList.add("imageInImageContainer");
+    price.setAttribute("style", "right: 0;");
+    spanContainer.appendChild(price);
 
     document.getElementById("holodeck").appendChild(spanContainer);
 }
