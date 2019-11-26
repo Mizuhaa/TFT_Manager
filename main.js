@@ -1,6 +1,9 @@
 window.onload = function() {
-    this.generateAndCreate4Images();
+    this.generateAndCreate5Cards();
 };
+
+var golds = 0;
+var exp = 100;
 
 function addTheImage(numberPng) {
     var img = document.createElement('img');
@@ -14,18 +17,18 @@ function generateAndCreateImage(){
     addTheImage(number);
 }
 
-function generateAndCreate4Images(){
+function generateAndCreate5Cards(){
     for(var i=0; i < 5; i++){
         generateAndCreateImage();
     }
 }
 
 function rerollCards(){
-    remove4Cards();
-    generateAndCreate4Images();
+    remove5Cards();
+    generateAndCreate5Cards();
 }
 
-function remove4Cards(){
+function remove5Cards(){
     var list = document.getElementsByClassName("cardHolder");
     
     for(var i = list.length - 1; 0 <= i; i--) {
@@ -34,3 +37,19 @@ function remove4Cards(){
         }
     }
 }
+
+function gainGolds(){
+    golds = golds + 10;
+
+}
+
+function gainExp(){
+    exp = exp + 50;
+}
+
+function changeTurn(){
+    generateAndCreate5Cards();
+    gainGolds();
+    gainExp();
+}
+
