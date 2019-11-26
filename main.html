@@ -5,28 +5,34 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
         <script src="main.js"></script>
         <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <button onclick="changeTurn()">qsdhqh</button>
         <!--La partie footer-->
         <footer  class="page-footer fixed-bottom">
             <div class="row">
                 <div class="container-fluid">
-                    <div class="offset-md-5 col-md-2 offset-md-5">
-                        <p id="goldDisplayer"></p>
-                        <p id="expDisplayer"></p>
+                  <div class="d-flex justify-content-center">
+                    <div class="offset-md-5 col-md-2 col-md-5">
+                      <button type="button" class="btn btn-info">
+                        <i class="fa fa-arrow-up"></i><span> Niveau : </span>
+                      </button>
+                      <button type="button" class="btn btn-warning">
+                        <i class="fa fa-money"></i><span> Budget : </span>
+                      </button>
                     </div>
+                </div>
                 </div>
             </div>
             <div class="row">
-                <div class="container-fluid d-flex flex-row ">
+                <div class="container-fluid d-flex flex-row">
                     <div class="col-md-2">
-                        <button class="btn btn-primary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">Reroll</button>
+                        <button class="btn btn-secondary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">Reroll</button>
                         <br>
-                        <button class="btn btn-primary btn-lg btn-block" style="margin-top:10px;" onclick="levelUp()"> Level Up </button>
+                        <button class="btn btn-success btn-lg btn-block" style="margin-top:10px;" onclick="levelUp()"> Level Up </button>
                     </div>
                     <div class="col-md-10">
-                            <div id="holodeck" class="p-2"></div>
+                        <div id="holodeck" class="p-2"></div>
                     </div>
                 </div>
             </div>
