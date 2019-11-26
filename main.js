@@ -4,7 +4,7 @@ window.onload = function() {
     displayExp();
 };
 
-var golds = 0;
+var golds = 5;
 var exp = 100;
 var charactersArray = ['Alternant', 'Employee', 'Senior'];
 var skillsArray = ['PHP', 'C#', 'JS', 'COBOL'];
@@ -12,11 +12,11 @@ var fieldArray = ['Web', 'Applicatif'];
 var playerArray = []
 
 function displayGolds(){
-    document.getElementById("goldDisplayer").innerHTML = golds;
+    document.getElementById("goldDisplayer").innerHTML = " " + golds;
 }
 
 function displayExp(){
-    document.getElementById("expDisplayer").innerHTML = Math.floor(exp/100);
+    document.getElementById("expDisplayer").innerHTML = " " + Math.floor(exp/100);
 }
 
 function addTheImage(numberPng) {
@@ -82,8 +82,11 @@ function generateAndCreate5Cards(){
 }
 
 function rerollCards(){
-    remove5Cards();
-    generateAndCreate5Cards();
+    if(golds - 5 >= 0){
+        remove5Cards();
+        generateAndCreate5Cards();
+        addGolds(-5);
+    }
 }
 
 function remove5Cards(){
@@ -96,55 +99,75 @@ function remove5Cards(){
     }
 }
 
-function gainGolds(){
-    golds = golds + 10;
-    displayGolds();
-
-}
-
-function gainExp(){
-    exp = exp + 50;
-    displayExp();
-}
-
 function changeTurn(){
     remove5Cards();
     generateAndCreate5Cards();
-    gainGolds();
-    gainExp();
+    addGolds(10);
+    addExp(50);
 }
 
 function selectCharacter(img) {
-    img.src = "res/empty.png";
-    img.removeAttribute("onclick");
+    if(golds - img.id >= 0){
+        img.src = "res/empty.png";
+        img.removeAttribute("onclick");
 
-    var skills = [];
-    var list = img.parentElement.children;
-    for(var i = list.length - 1; 0 <= i; i--) {
-        if(list[i].className === "imageInImageContainer") {
-            if (list[i].src.includes("res/csharp.png")) {
-                skills.push("C#");
-            } else if (list[i].src.includes("res/cobol.png")) {
-                skills.push("COBOL");
-            } else if (list[i].src.includes("res/js.png")) {
-                skills.push("JS");
-            } else if (list[i].src.includes("res/php.png")) {
-                skills.push("PHP");
+        var skills = [];
+        var list = img.parentElement.children;
+        for(var i = list.length - 1; 0 <= i; i--) {
+            if(list[i].className === "imageInImageContainer") {
+                if (list[i].src.includes("res/csharp.png")) {
+                    skills.push("C#");
+                } else if (list[i].src.includes("res/cobol.png")) {
+                    skills.push("COBOL");
+                } else if (list[i].src.includes("res/js.png")) {
+                    skills.push("JS");
+                } else if (list[i].src.includes("res/php.png")) {
+                    skills.push("PHP");
+                }
+
+                list[i].remove();
             }
-
-            list[i].remove();
         }
+        addGolds(-img.id);
+
+        playerArray.push({
+            character: img.id,
+            skills: skills
+        });
+
+        var a = 0;
     }
-
-    playerArray.push({
-        character: img.id,
-        skills: skills
-    });
-
-    var a = 0;
 }
 
 function levelUp(){
-    exp+=50;
-    golds-=10;
+    if(golds-10 >= 0){
+        addExp(50);
+        addGolds(-10);
+    }
+}
+
+function addGolds(number){
+    if(Number.isInteger(number)){
+        golds += number;
+    }
+    displayGolds();
+}
+
+function addExp(number){
+    if(Number.isInteger(number)){
+        exp += number;
+    }
+    displayExp();
+}
+
+function calculPoints(){
+    var totalPoints = 0;
+
+    const languageMap = skillsArray.map(x => 0);
+
+    playerArray.forEach(function(element){
+        element.skills.forEach(function(skillElement){
+            languageMap[skillElement] += 1;
+        });
+    });
 }

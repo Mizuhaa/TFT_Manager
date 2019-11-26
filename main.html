@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
+        <button onclick="changeTurn()">change</button>
+        <button onclick="calculPoints()">end</button>
         <!--La partie footer-->
         <footer  class="page-footer fixed-bottom">
             <div class="row">
@@ -15,10 +17,10 @@
                   <div class="d-flex justify-content-center">
                     <div class="offset-md-5 col-md-2 col-md-5">
                       <button type="button" class="btn btn-info">
-                        <i class="fa fa-arrow-up"></i><span> Niveau : </span>
+                        <i class="fa fa-arrow-up"></i><span id="expDisplayer"></span>
                       </button>
-                      <button type="button" class="btn btn-warning">
-                        <i class="fa fa-money"></i><span> Budget : </span>
+                      <button type="button" class="btn btn-warning"><span id="goldDisplayer"></span>
+                        <i class="fa fa-money"></i>
                       </button>
                     </div>
                 </div>
@@ -27,9 +29,15 @@
             <div class="row">
                 <div class="container-fluid d-flex flex-row">
                     <div class="col-md-2">
-                        <button class="btn btn-secondary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">Reroll</button>
+                        <button class="btn btn-secondary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">
+                            Reroll 5
+                            <i class="fa fa-money"></i>
+                        </button>
                         <br>
-                        <button class="btn btn-success btn-lg btn-block" style="margin-top:10px;" onclick="levelUp()"> Level Up </button>
+                        <button class="btn btn-success btn-lg btn-block" style="margin-top:10px;" onclick="levelUp()"> 
+                            Level Up 10
+                            <i class="fa fa-money"></i>
+                        </button>
                     </div>
                     <div class="col-md-10">
                         <div id="holodeck" class="p-2"></div>
