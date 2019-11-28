@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     this.generateAndCreate5Cards();
     displayGolds();
     displayExp();
@@ -11,19 +11,19 @@ var skillsArray = ['PHP', 'C#', 'JS', 'COBOL'];
 var playerArray = [];
 var currenTurn = 1;
 
-function displayGolds(){
+function displayGolds() {
     document.getElementById("goldDisplayer").innerHTML = " " + golds;
 }
 
-function displayExp(){
-    document.getElementById("expDisplayer").innerHTML = " " + Math.floor(exp/100);
+function displayExp() {
+    document.getElementById("expDisplayer").innerHTML = " " + Math.floor(exp / 100);
 }
 
-function displayTurn(){
+function displayTurn() {
     document.getElementById("turnCounter").innerText = currenTurn;
 }
 
-function addTheField(numberPng){
+function addTheField(numberPng) {
     var spanContainer = document.createElement('span');
     spanContainer.classList.add("imageContainer");
 
@@ -52,7 +52,7 @@ function addTheImage(numberPng) {
     spanContainer.appendChild(img);
 
     var i = 1;
-    generateRandomSkills(numberPng).forEach(function(skill) {
+    generateRandomSkills(numberPng).forEach(function (skill) {
         var skillImage = document.createElement('img');
         skillImage.src = skill;
         skillImage.classList.add("imageInImageContainer");
@@ -97,50 +97,50 @@ function generateRandomSkills(characterNumber) {
     return array;
 }
 
-function generateAndCreateImage(){
-    var number = Math.floor(Math.random() * 3) + 1; 
+function generateAndCreateImage() {
+    var number = Math.floor(Math.random() * 3) + 1;
     addTheImage(number);
 }
 
-function generateAndCreateField(){
+function generateAndCreateField() {
     var number = Math.floor(Math.random() * 3) + 1;
     addTheField(number);
 }
 
-function generateAndCreate5Cards(){
+function generateAndCreate5Cards() {
     var maxCards = 5;
-    if(currenTurn == 1 || currenTurn%5==0){
+    if (currenTurn == 1 || currenTurn % 5 == 0) {
         maxCards = 4;
     }
 
-    for(var i=0; i < maxCards; i++){
+    for (var i = 0; i < maxCards; i++) {
         generateAndCreateImage();
     }
-    
-    if(currenTurn == 1 ||currenTurn%5==0){
+
+    if (currenTurn == 1 || currenTurn % 5 == 0) {
         generateAndCreateField();
     }
 }
 
-function rerollCards(){
-    if(golds - 5 >= 0){
+function rerollCards() {
+    if (golds - 5 >= 0) {
         remove5Cards();
         generateAndCreate5Cards();
         addGolds(-5);
     }
 }
 
-function remove5Cards(){
+function remove5Cards() {
     var list = document.getElementsByClassName("cardHolder");
-    
-    for(var i = list.length - 1; 0 <= i; i--) {
-        if(list[i] && list[i].parentElement) {
+
+    for (var i = list.length - 1; 0 <= i; i--) {
+        if (list[i] && list[i].parentElement) {
             list[i].parentElement.removeChild(list[i]);
         }
     }
 }
 
-function changeTurn(){
+function changeTurn() {
     addTurn();
     remove5Cards();
     generateAndCreate5Cards();
@@ -149,26 +149,28 @@ function changeTurn(){
     updateFamilies();
 }
 
-function selectField(img){
-    if(golds - (img.id) >= 0){
+function selectField(img) {
+    if (golds - (img.id) >= 0) {
 
         img.removeAttribute("onclick");
-
-        document.getElementById("fieldHolder").appendChild(img);
+        
         
         addGolds(-(img.id));
+
+        document.body.setAttribute("style", "background-image: url('" + img.src + "'); background-size: 100% 100%");
+        img.src = "res/empty.png";
     }
 }
 
 function selectCharacter(img) {
-    if(golds - img.id >= 0){
+    if (golds - img.id >= 0) {
         img.src = "res/empty.png";
         img.removeAttribute("onclick");
 
         var skills = [];
         var list = img.parentElement.children;
-        for(var i = list.length - 1; 0 <= i; i--) {
-            if(list[i].className === "imageInImageContainer") {
+        for (var i = list.length - 1; 0 <= i; i--) {
+            if (list[i].className === "imageInImageContainer") {
                 if (list[i].src.includes("res/csharp.png")) {
                     skills.push("C#");
                 } else if (list[i].src.includes("res/cobol.png")) {
@@ -191,89 +193,91 @@ function selectCharacter(img) {
 
         var a = 0;
     }
+    updateFamilies();
 }
 
-function levelUp(){
-    if(golds-10 >= 0){
+function levelUp() {
+    if (golds - 10 >= 0) {
         addExp(50);
         addGolds(-10);
     }
 }
 
-function addGolds(number){
-    if(Number.isInteger(number)){
+function addGolds(number) {
+    if (Number.isInteger(number)) {
         golds += number;
     }
     displayGolds();
 }
 
-function addExp(number){
-    if(Number.isInteger(number)){
+function addExp(number) {
+    if (Number.isInteger(number)) {
         exp += number;
     }
     displayExp();
 }
 
-function addTurn(){
+function addTurn() {
     currenTurn += 1;
     displayTurn();
 }
 
-function endGame(){
+function endGame() {
     updateFamilies();
     calculPoints()
 }
 
-function calculPoints(){
+function calculPoints() {
     var totalPoints = 0;
 
     const languageMap = new Array();
 
-    playerArray.forEach(function(element){
-        element.skills.forEach(function(skillElement){
-            if(languageMap[skillElement] == null){
+    playerArray.forEach(function (element) {
+        element.skills.forEach(function (skillElement) {
+            if (languageMap[skillElement] == null) {
                 languageMap[skillElement] = 1;
-            }
-            else{
+            } else {
                 languageMap[skillElement] += 1;
             }
         });
     });
 
-    Object.values(languageMap).forEach(function(element) {
+    Object.values(languageMap).forEach(function (element) {
         totalPoints += element;
     });
 
     document.getElementById("scoreEnd").innerHTML = totalPoints;
+    document.getElementById("scoreEnd").style("scoreEndCard", "visible");
+
+    document.getElementById
 }
 
-function updateFamilies(){
+function updateFamilies() {
     const languageMap = new Array();
 
-    playerArray.forEach(function(element){
-        element.skills.forEach(function(skillElement){
-            if(languageMap[skillElement] == null){
+    playerArray.forEach(function (element) {
+        element.skills.forEach(function (skillElement) {
+            if (languageMap[skillElement] == null) {
                 languageMap[skillElement] = 1;
-            }
-            else{
+            } else {
                 languageMap[skillElement] += 1;
             }
         });
     });
-    
-    for(var i = 0; i < Object.keys(languageMap).length; i++){
+
+    for (var i = 0; i < Object.keys(languageMap).length; i++) {
         var element = Object.keys(languageMap)[i];
         var number = languageMap[element];
-        if(element==="C#"){
+        if (element === "C#") {
             document.getElementById("csharpCounter").innerHTML = number;
         }
-        if(element==="COBOL"){
+        if (element === "COBOL") {
             document.getElementById("cobolCounter").innerHTML = number;
         }
-        if(element==="JS"){
+        if (element === "JS") {
             document.getElementById("jsCounter").innerHTML = number;
         }
-        if(element==="PHP"){
+        if (element === "PHP") {
             document.getElementById("phpCounter").innerHTML = number;
         }
     }

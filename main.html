@@ -1,102 +1,121 @@
 <html>
-    <head>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-        <script src="main.js"></script>
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-            <!--Partie header-->
-            <div class="offset-md-5 col-md-2 offset-md-5">
-                <p><button type="button" class="btn btn-primary">Tour <span id="turnCounter">1</span></button></p>
-            </div>
-            <!--Fin de la partie header-->
 
-        <button onclick="changeTurn()">change</button>
-        <button onclick="endGame()">end</button>
-        <p id="scoreEnd">z</p>
-        <!--Partie familles-->
-        <div class="container-fluid">
-            <div class="col-md-2">
-                <div class="card" style="margin-top:10%;">
-                    <article class="card-group-item">
-                        <header class="card-header">
-                            <h6 class="title">Famille Applicative </h6>
-                        </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <div class="row">
-                                    <p style="margin: 0 auto;"> <img src="res/csharp.png" class="img-fluid imgLogo" alt="Responsive image"><span id="csharpCounter">0</span></p>
-                                </div>
-                                <div class="row">
-                                    <p style="margin: 0 auto;"> <img src="res/cobol.png" class="img-fluid imgLogo" alt="Responsive image"><span id="cobolCounter">0</span> </p>
-                                </div>
+<head>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
+    </script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!--Partie header-->
+    <div class="offset-md-5 col-md-2 offset-md-5">
+        <p><button type="button" class="btn btn-primary">Tour <span id="turnCounter">1</span></button></p>
+    </div>
+    <!--Fin de la partie header-->
+
+    <button onclick="changeTurn()" class="btn-info">change</button>
+    <button onclick="endGame()" class="btn-info">end</button>
+    <!--Partie familles-->
+    <div class="container-fluid">
+        <div class="col-md-2" style="position: fixed;">
+            <div class="card" style="margin-top:10%;">
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title">Famille Applicative </h6>
+                    </header>
+                    <div class="filter-content">
+                        <div class="card-body">
+                            <div class="row">
+                                <p style="margin: 0 auto;"> <img src="res/csharp.png" class="img-fluid imgLogo"
+                                        alt="Responsive image"><span id="csharpCounter">0</span></p>
+                            </div>
+                            <div class="row">
+                                <p style="margin: 0 auto;"> <img src="res/cobol.png" class="img-fluid imgLogo"
+                                        alt="Responsive image"><span id="cobolCounter">0</span> </p>
                             </div>
                         </div>
-                    </article>
-                    <article class="card-group-item">
-                        <header class="card-header">
-                            <h6 class="title">Famille Web </h6>
-                        </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <div class="row">
-                                    <p style="margin: 0 auto;"> <img src="res/js.png" class="img-fluid imgLogo" alt="Responsive image"><span id="jsCounter">0</span> </p>
-                                </div>
-                                <div class="row">
-                                    <p style="margin: 0 auto;"> <img src="res/php.png" class="img-fluid imgLogo" alt="Responsive image"><span id="phpCounter">0</span> </p>
-                                </div>
+                    </div>
+                </article>
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title">Famille Web </h6>
+                    </header>
+                    <div class="filter-content">
+                        <div class="card-body">
+                            <div class="row">
+                                <p style="margin: 0 auto;"> <img src="res/js.png" class="img-fluid imgLogo"
+                                        alt="Responsive image"><span id="jsCounter">0</span> </p>
+                            </div>
+                            <div class="row">
+                                <p style="margin: 0 auto;"> <img src="res/php.png" class="img-fluid imgLogo"
+                                        alt="Responsive image"><span id="phpCounter">0</span> </p>
                             </div>
                         </div>
+                    </div>
+                </article>
+                <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Score Final </h6>
+                        </header>
+                        <div class="filter-content">
+                                <p id="scoreEnd" style="text-align: center;"></p>
+                        </div>
                     </article>
-                    </article>
-                </div>
-            </div>
-            <!--Fin de la partie familles-->
-            <!--Partie terrain-->
-            <div class="col-md-5" style="background-color: aquamarine;">
-                <p id="fieldHolder">s</p>
             </div>
         </div>
-        <!--Fin de la partie terrain-->
+        <div class="offset-md-2 col-md-4"></div>
+    </div>
+    <!--Fin de la partie familles-->
+    <!--Partie terrain-->
+    <div class="col-md-5">
+        <p id="fieldHolder"></p>
+    </div>
+    <!--Fin de la partie terrain-->
 
-        <!--La partie footer-->
-        <footer  class="page-footer fixed-bottom">
-            <div class="row">
-                <div class="container-fluid">
-                  <div class="d-flex justify-content-center">
+    <!--La partie footer-->
+    <footer class="page-footer fixed-bottom" style="background-color: darkgray;">
+        <div class="row">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-center">
                     <div class="offset-md-5 col-md-2 col-md-5">
-                      <button type="button" class="btn btn-info">
-                        <i class="fa fa-arrow-up"></i><span id="expDisplayer"></span>
-                      </button>
-                      <button type="button" class="btn btn-warning"><span id="goldDisplayer"></span>
+                        <button type="button" class="btn btn-info">
+                            <i class="fa fa-arrow-up"></i><span id="expDisplayer"></span>
+                        </button>
+                        <button type="button" class="btn btn-warning"><span id="goldDisplayer"></span>
+                            <i class="fa fa-money"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container-fluid d-flex flex-row">
+                <div class="col-md-2">
+                    <button class="btn btn-secondary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">
+                        Reroll 5
                         <i class="fa fa-money"></i>
-                      </button>
-                    </div>
+                    </button>
+                    <br>
+                    <button class="btn btn-success btn-lg btn-block" style="margin-top:10px;" onclick="levelUp()">
+                        Level Up 10
+                        <i class="fa fa-money"></i>
+                    </button>
                 </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="container-fluid d-flex flex-row">
-                    <div class="col-md-2">
-                        <button class="btn btn-secondary btn-lg btn-block" style="margin-top:30px;" onclick="rerollCards()">
-                            Reroll 5
-                            <i class="fa fa-money"></i>
-                        </button>
-                        <br>
-                        <button class="btn btn-success btn-lg btn-block" style="margin-top:10px;" onclick="levelUp()"> 
-                            Level Up 10
-                            <i class="fa fa-money"></i>
-                        </button>
-                    </div>
-                    <div class="col-md-10">
-                        <div id="holodeck" class="p-2"></div>
-                    </div>
+                <div class="col-md-10">
+                    <div id="holodeck" class="p-2"></div>
                 </div>
             </div>
-        </footer>
-        <!--Fin de la partie footer-->
-    </body>
+        </div>
+    </footer>
+    <!--Fin de la partie footer-->
+</body>
+
 </html>
